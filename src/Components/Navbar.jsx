@@ -10,14 +10,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-dark bg-dark px-3 sticky-top">
+    <nav className="navbar navbar-black bg-black px-3 sticky-top">
       {/* ✅ Clickable logo that routes to home */}
       <Link to="/" className="navbar-brand d-flex align-items-center">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
           alt="Star Wars Logo"
-          height="40"
-          className="me-2"
+          height="80"
+          className="border border-warning rounded me-2"
           style={{ cursor: "pointer" }}
         />
       </Link>

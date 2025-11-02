@@ -7,7 +7,7 @@ const Home = () => {
 
 return (
     <div className="container mt-4">
-      <h2 className="text-warning mb-3">Personajes</h2>
+      <h2 className="text-decoration-underline text-warning mb-3">Personajes</h2>
       <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 mb-4">
         {state.people.length > 0 ? (
           state.people.map((item) => (
@@ -18,7 +18,7 @@ return (
         )}
       </div>
 
-      <h2 className="text-warning mb-3">Planetas</h2>
+      <h2 className="text-decoration-underline text-warning mb-3">Planetas</h2>
       <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 mb-4">
         {state.planets.length > 0 ? (
           state.planets.map((item) => (
@@ -29,7 +29,7 @@ return (
         )}
       </div>
 
-      <h2 className="text-warning mb-3">Vehículos</h2>
+      <h2 className="text-decoration-underline  text-warning mb-3">Vehículos</h2>
       <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 mb-4">
         {state.vehicles.length > 0 ? (
           state.vehicles.map((item) => (

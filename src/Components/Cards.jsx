@@ -17,7 +17,7 @@ export const Cards = ({ item, type }) => {
   };
 
   return (
-    <div className="card bg-dark text-light" style={{ minWidth: "18rem" }}>
+    <div className="card bg-black text-light" style={{ minWidth: "18rem" }}>
       <div
         className="card-img-top placeholder-glow bg-secondary d-flex align-items-center justify-content-center"
         style={{ height: "200px" }}
@@ -30,7 +30,7 @@ export const Cards = ({ item, type }) => {
         <h5 className="card-title">{item.name}</h5>
         <div className="d-flex justify-content-between align-items-center mt-3">
           <button
-            className="btn btn-outline-primary"
+            className="btn btn-outline-warning"
             onClick={() => navigate(`/detail/${type}/${item.uid}`)}
           >
             Ver más
