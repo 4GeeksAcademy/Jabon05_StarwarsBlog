@@ -6,11 +6,11 @@ export const Cards = ({ item, type }) => {
   const { dispatch, state } = useAppContext();
   const navigate = useNavigate();
 
-  const isFavorite = state.favorites.some((favorite) => favorite.uid === item.uid);
+  const isFavorite = state.favorites.some((favorite) => favorite.uid === item.uid && favorite.type === type);
 
   const handleFavorite = () => {
     if (isFavorite) {
-      dispatch({ type: "REMOVE_FAVORITE", payload: item });
+      dispatch({ type: "REMOVE_FAVORITE", payload: {uid: item.uid, type}});
     } else {
       dispatch({ type: "ADD_FAVORITE", payload: { ...item, type } });
     }

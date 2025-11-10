@@ -14,24 +14,39 @@ function reducer(state, action) {
     case "SET_DATA":
       return { ...state, [action.payload.type]: action.payload.results };
 
-    case "ADD_FAVORITE":
-      return { ...state, favorites: [...state.favorites, action.payload] };
-
-    case "REMOVE_FAVORITE":
+    case "ADD_FAVORITE": {
+      const payload = action.payload;
+      const exist = state.favorites.some((f) => f.uid === payload.uid && f.type === payload.type);
+      if (exist) return state;
+      return { ...state, favorites: [...state.favorites, payload] };
+    }
+    case "REMOVE_FAVORITE": {
+      const payload = action.payload;
+      const uid = payload.uid ?? payload?.uid;
+      const type = payload.type ?? payload?.type; 
       return {
         ...state,
         favorites: state.favorites.filter(
-          (fav) => fav.uid !== action.payload.uid
+          (fav) => !(fav.uid === uid && fav.type === type)
         ),
       };
-
+    }
     default:
       return state;
   }
 }
 
 export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const stored = (() => {
+    try {
+      const raw = localStorage.getItem("sw_favorites_v1");
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { console.error("Error parsing favorites from localStorage", e);
+      return null;
+    }
+  })();
+
+  const [state, dispatch] = useReducer(reducer, {...initialState, favorites: stored ?? initialState.favorites,});
 
   useEffect(() => {
     const fetchData = async (type) => {
